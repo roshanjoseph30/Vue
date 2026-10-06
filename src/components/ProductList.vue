@@ -48,10 +48,12 @@ const filteredProducts = computed(() => {
     })
 })
 
-const addToCart = (product) => {
+const emit = defineEmits(['add-to-cart'])
 
+const addToCart = (product) => {
     console.log('Added to cart:', product)
 
+    emit('add-to-cart', product)
 }
 
 onMounted(() => {

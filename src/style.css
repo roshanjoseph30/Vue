@@ -2,12 +2,26 @@ body {
   background-color: #f0e2c4;
   margin: 40px;
 }
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+}
 
 .header h1{
   font-size: 64px;
   text-align: center;
 }
 
+.bag img{
+ width: 50px;
+ height: 50 px;
+}
+.bag span{
+  font-size: 20px;
+  font-weight: bold;
+}
 .filter {
   display: flex;
   justify-content: center;
