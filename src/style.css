@@ -9,6 +9,19 @@ body {
   gap: 70px;
 }
 
+.bag {
+  background-color: #eccb85df;
+  border-radius: 30px;
+  width: 80px;
+ 
+  position: fixed;
+  top: 105px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
 .header h1{
   font-size: 64px;
   text-align: center;

@@ -65,5 +65,8 @@ const addToCart = () => {
    padding: 5px 10px;
    cursor: pointer;
 }
+.product-price button:hover{
+   background-color: #333;
+}
 
 </style>
