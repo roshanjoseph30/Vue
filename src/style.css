@@ -20,7 +20,7 @@ body {
   font-size: 18px;
   color: #181616fd;
   border-radius: 30px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border: 1px solid #ccc;
   padding: 10px;
  }

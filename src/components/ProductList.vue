@@ -1,4 +1,5 @@
 <script setup>
+import ProductCard from './ProductCard.vue'
 import { ref, onMounted, computed } from 'vue'
 
 const products = ref([])
@@ -47,6 +48,11 @@ const filteredProducts = computed(() => {
     })
 })
 
+const addToCart = (product) => {
+
+    console.log('Added to cart:', product)
+
+}
 
 onMounted(() => {
     fetchProducts()
@@ -86,26 +92,22 @@ onMounted(() => {
 
     <div class="products">
 
-        <div
+        <ProductCard
             v-for="product in filteredProducts"
             :key="product.id"
-            class="product-card"
-        >
-
-            <div class="product-image">
-                <img
-                    :src="product.thumbnail"
-                    :alt="product.title"
-                />
-            </div>
-
-            <h2>{{ product.title }}</h2>
-
-            <p>${{ product.price }}</p>
-
-        </div>
-
+            :product="product"
+            @add-to-cart="addToCart"
+        />
+        
     </div>
 
 </template>
 
+
+<style scoped>
+.products {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+}
+</style>
