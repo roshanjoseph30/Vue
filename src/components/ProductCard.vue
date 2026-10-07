@@ -93,7 +93,7 @@ const addToCart = () => {
 .description-box {
     position: absolute;
     top: 0;
-    left: 254px;
+    left: 140px;
     z-index: 1;
 
     width: 250px;
