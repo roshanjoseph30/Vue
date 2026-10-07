@@ -156,8 +156,8 @@ onUnmounted(() => {
 
 
 .carousel-card {
-    flex: 0 0 calc((100% - 120px) / 5);
-    background-color: rgba(255, 254, 254, 0.36);
+    flex: 0 0 calc((100% - 60px) / 3);
+    background-color: rgba(255, 254, 254, 0.48);
     border-radius: 20px;
     border: 1px solid #ccc;
     padding: 20px;
