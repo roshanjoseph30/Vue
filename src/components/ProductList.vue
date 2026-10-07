@@ -104,12 +104,3 @@ onMounted(() => {
     </div>
 
 </template>
-
-
-<style scoped>
-.products {
-    display:grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 50px;
-}
-</style>
