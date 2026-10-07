@@ -3,51 +3,35 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 const products = ref([])
-
 const currentIndex = ref(0)
-
 const slideWidth = ref(0)
-
 const isTransitioning = ref(true)
-
 let interval
-
 const API_URL = 'https://dummyjson.com/products?limit=100'
 
-
 const fetchProducts = async () => {
-
     try {
-
         const response = await fetch(API_URL)
-
         if (!response.ok) {
             throw new Error('Failed to fetch products')
         }
-
         const data = await response.json()
-
         products.value = data.products
 
     } catch (error) {
-
         console.error(error)
 
     }
 
 }
 const updateSlideWidth = () => {
-
     const card = document.querySelector('.carousel-card')
-
     if (card) {
-        slideWidth.value = card.offsetWidth + 30
+        slideWidth.value = card.offsetWidth + 25
     }
 
 }
-
 const carouselProducts = computed(() => {
-
     return [
         ...products.value,
         ...products.value
@@ -55,74 +39,49 @@ const carouselProducts = computed(() => {
 
 })
 
-
 const nextSlide = () => {
-
     currentIndex.value++
-
 }
 
-
 const handleTransitionEnd = () => {
-
     if (currentIndex.value === products.value.length) {
-
         isTransitioning.value = false
-
         currentIndex.value = 0
-
         requestAnimationFrame(() => {
-
             requestAnimationFrame(() => {
-
                 isTransitioning.value = true
-
             })
-
         })
-
     }
-
 }
 
 
 onMounted(async () => {
-
     await fetchProducts()
-
     updateSlideWidth()
-
     window.addEventListener('resize', updateSlideWidth)
-
     interval = setInterval(nextSlide, 2500)
-
 })
 
 
 onUnmounted(() => {
-
     clearInterval(interval)
-
     window.removeEventListener('resize', updateSlideWidth)
 
 })
-
 </script>
-
 
 <template>
 
     <div class="carousel">
 
-        <div
-            class="carousel-track"
+        <div class="carousel-track"
             :class="{ 'no-transition': !isTransitioning }"
             :style="{
                 transform: `translateX(-${currentIndex * slideWidth}px)`
             }"
             @transitionend="handleTransitionEnd"
         >
-
             <div
                 v-for="(product, index) in carouselProducts"
                 :key="`${product.id}-${index}`"
